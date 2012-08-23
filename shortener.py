@@ -6,7 +6,9 @@ from string import digits, ascii_letters
 from pymongo import Connection
 from datetime import datetime
 
-conn = Connection()
+# conn = Connection('23.21.152.121', 27069)
+conn = Connection("mongodb://test:test@blibb.it:27069")
+
 db = conn['shurls']
 objects = db['urls']
 num = 3
