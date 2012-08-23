@@ -5,7 +5,7 @@ Url Shortener made with python and Flask and MongoDB.
 
 Just run it as any other Flask app.
 
-ivanb@local:~/workspace/surl$ python shortener.py
+ivan@local:~/workspace/surl$ python shortener.py
 
 To test it, execute this:
 curl -d "link=https://github.com/ipedrazas" http://localhost:5001
