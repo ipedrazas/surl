@@ -6,6 +6,7 @@ Url Shortener made with python and Flask and MongoDB.
 It's basically a very simple REST service with 3 methods:
 
 ::
+
     GET: /<link_id> -> returns the original url
     POST: / link=url -> returns the shortened url
     GET: /stats/<link_id> -> returns the stats of the url
@@ -13,8 +14,8 @@ It's basically a very simple REST service with 3 methods:
 It comes ready to run under a virtualenv, so, after clonning the repo, activate virtualenv, install dependencies and run it (python shortener.py will do)
 
 There are only 2 dependencies:
-- Flask
-- pymongo
+- [Flask](http://flask.pocoo.org/)
+- [pymongo](http://api.mongodb.org/python/current/)
 
 install & config Virtualenv
 ---------------------------
@@ -26,6 +27,7 @@ install & config Virtualenv
 
 To test it, execute this:
 ::
+
     curl -d "link=https://github.com/ipedrazas" http://localhost:5000
 
     It will return a json doc like this one:
