@@ -36,10 +36,12 @@ try:
     URL = os.environ['URL']
     DB_URL = os.environ['DB_URL']
     NUM_CHARS = os.environ['NUM_CHARS']
+    SECRET = os.environ['SECRET']
 except:
     URL = 'http://localhost:5000/'
     DB_URL = 'mongodb://localhost:27017'
     NUM_CHARS = 3
+    SECRET = 'secret'
 
 
 conn = Connection(DB_URL)
@@ -84,6 +86,9 @@ def short_id(link):
 @app.route('/', methods=['POST'])
 def add():
     link = request.form['link']
+    auth_token = request.form['key']
+    if auth_token != SECRET:
+        abort(401)
     url = objects.find_one({'link': link})
     if url:
         objects.update({'_id': url['_id']}, {'$inc': {'saved': 1}})
