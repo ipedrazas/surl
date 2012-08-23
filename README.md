@@ -5,8 +5,6 @@ Url Shortener made with python and Flask and MongoDB.
 
 It's basically a very simple REST service with 3 methods:
 
-::
-
     GET: /<link_id> -> returns the original url
     POST: / link=url -> returns the shortened url
     GET: /stats/<link_id> -> returns the stats of the url
@@ -26,7 +24,6 @@ install & config Virtualenv
 
 
 To test it, execute this:
-::
 
     curl -d "link=https://github.com/ipedrazas" http://localhost:5000
 
@@ -55,6 +52,6 @@ Running as an Heroku Instance
 
 In case you want to run it in Heroku, set the variables first:
 
-heroku config:add URL=http://myapp_name.herokuapp.com/ DB_URL=mongodb://my_user:my_password@my_mongodb_server:my_mongodb_port NUM_CHARS=4
+    heroku config:add   URL=http://myapp_name.herokuapp.com/    DB_URL=mongodb://my_user:my_password@my_mongodb_server:my_mongodb_port  NUM_CHARS=4
 
 You have to install a mongodb instance, since this app doesn't include the database you could use [MongoLab](https://mongolab.com) where the first 240Mb are free.
