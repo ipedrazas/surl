@@ -7,13 +7,16 @@ from pymongo import Connection
 from datetime import datetime
 import os
 
-conn = Connection("mongodb://test:test@blibb.it:27069")
+URL = os.environ['URL']
+DB_URL = os.environ['DB_URL']
+
+conn = Connection(DB_URL)
 
 db = conn['shurls']
 objects = db['urls']
 num = 3
 
-BASE = 'http://shurls.herokuapp.com/'
+BASE = URL
 
 
 @app.route('/', methods=['GET'])
@@ -42,9 +45,9 @@ def add():
     url = objects.find_one({'link': link})
     if url:
         objects.update({'_id': url['_id']}, {'$inc': {'saved': 1}})
-        return jsonify({'url': BASE + '/' + url['url_id']})
+        return jsonify({'url': BASE + url['url_id']})
     else:
-        return jsonify({'url': BASE + '/' + short_id(link)})
+        return jsonify({'url': BASE + short_id(link)})
 
 if __name__ == '__main__':
      # Bind to PORT if defined, otherwise default to 5000.
