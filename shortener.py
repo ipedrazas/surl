@@ -49,5 +49,5 @@ def add():
         return jsonify({'url': BASE + '/' + short_id(link)})
 
 if __name__ == '__main__':
-    app.run(SERVER_NAME, SERVER_PORT, debug=True)
+    app.run()
 
