@@ -5,17 +5,15 @@ from random import  sample
 from string import digits, ascii_letters
 from pymongo import Connection
 from datetime import datetime
+import os
 
-# conn = Connection('23.21.152.121', 27069)
 conn = Connection("mongodb://test:test@blibb.it:27069")
 
 db = conn['shurls']
 objects = db['urls']
 num = 3
 
-SERVER_NAME = '127.0.0.1'
-SERVER_PORT = 5001
-BASE = 'http://%s:%s' % (SERVER_NAME, str(SERVER_PORT))
+BASE = 'http://shurls.herokuapp.com/'
 
 
 @app.route('/', methods=['GET'])
@@ -49,5 +47,7 @@ def add():
         return jsonify({'url': BASE + '/' + short_id(link)})
 
 if __name__ == '__main__':
-    app.run()
+     # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
